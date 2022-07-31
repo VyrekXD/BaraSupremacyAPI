@@ -15,7 +15,6 @@ import { AppModule } from './app.module.js'
 		SwaggerModule.setup('/api', app, document)
 	}
 
-	useContainer(app.select(AppModule), { fallbackOnErrors: true })
 	app.useGlobalPipes(new ValidationPipe())
 	await app.listen(3000, '::')
 })()
