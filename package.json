@@ -1,0 +1,50 @@
+{
+	"name": "barasupremacy-api",
+	"version": "0.0.1",
+	"type": "module",
+	"description": "La api de BaraSupremacy, unicamente para los bots por ahora",
+	"main": "build/index.js",
+	"scripts": {
+		"prepare": "husky install",
+		"format": "prettier --write src",
+		"build": "tsc",
+		"start": "tsc && node build/index.js",
+		"start:prod": "cross-env NODE_ENV=production tsc && node build/index.js",
+		"test": "nodemon --config nodemon.json"
+	},
+	"keywords": [],
+	"author": "Vyrek",
+	"license": "Apache-2.0",
+	"lint-staged": {
+		"*.ts": [
+			"pnpm run format"
+		]
+	},
+	"devDependencies": {
+		"@swc/cli": "^0.1.57",
+		"@swc/core": "^1.2.220",
+		"@types/node": "^18.6.3",
+		"cross-env": "^7.0.3",
+		"husky": "^8.0.1",
+		"lint-staged": "^13.0.3",
+		"nodemon": "^2.0.19",
+		"prettier": "^2.7.1",
+		"typescript": "^4.7.4"
+	},
+	"dependencies": {
+		"@fastify/static": "^6.5.0",
+		"@nestjs/common": "^9.0.7",
+		"@nestjs/core": "^9.0.7",
+		"@nestjs/platform-fastify": "^9.0.7",
+		"@nestjs/platform-socket.io": "^9.0.7",
+		"@nestjs/swagger": "^6.0.4",
+		"@nestjs/websockets": "^9.0.7",
+		"class-transformer": "^0.5.1",
+		"class-validator": "^0.13.2",
+		"dotenv": "^16.0.1",
+		"reflect-metadata": "^0.1.13",
+		"rxjs": "^7.5.6",
+		"socket.io": "^4.5.1",
+		"source-map-support": "^0.5.21"
+	}
+}

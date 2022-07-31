@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"target": "ESNext",
+		"module": "ESNext",
+		"allowSyntheticDefaultImports": true,
+		"outDir": "./build",
+		"skipLibCheck": true,
+		"moduleResolution": "node"
+	}
+}
