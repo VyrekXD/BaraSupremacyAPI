@@ -1,6 +1,6 @@
 {
 	"name": "barasupremacy-api",
-	"version": "0.0.1",
+	"version": "2.0.0",
 	"type": "module",
 	"description": "La api de BaraSupremacy, unicamente para los bots por ahora",
 	"main": "build/index.js",
@@ -48,3 +48,4 @@
 		"source-map-support": "^0.5.21"
 	}
 }
+
