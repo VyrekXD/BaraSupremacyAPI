@@ -63,8 +63,8 @@ export class GatewayService implements OnGatewayConnection, OnGatewayDisconnect,
 		this.logger.log(`Socket connected. ${this.sockets} connected.`)
 	}
 
-	@SubscribeMessage('addImages')
+	@SubscribeMessage('addImage')
 	async addImages(@ConnectedSocket() socket: Socket, @MessageBody() data: Image) {
-		this.server.emit('addImages', data)
+		this.server.emit('addImage', data)
 	}
 }
