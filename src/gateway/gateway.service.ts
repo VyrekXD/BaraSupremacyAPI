@@ -12,6 +12,8 @@ import { Server, Socket } from 'socket.io'
 import { config } from 'dotenv'
 import { Logger } from '@nestjs/common'
 
+import { Image } from './gateway.interface.js'
+
 config()
 
 @WebSocketGateway({
@@ -62,7 +64,7 @@ export class GatewayService implements OnGatewayConnection, OnGatewayDisconnect,
 	}
 
 	@SubscribeMessage('addImages')
-	async addImages(@ConnectedSocket() socket: Socket, @MessageBody() data: any) {
+	async addImages(@ConnectedSocket() socket: Socket, @MessageBody() data: Image[]) {
 		this.server.emit('addImages', data)
 	}
 }
