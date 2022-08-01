@@ -64,7 +64,7 @@ export class GatewayService implements OnGatewayConnection, OnGatewayDisconnect,
 	}
 
 	@SubscribeMessage('addImages')
-	async addImages(@ConnectedSocket() socket: Socket, @MessageBody() data: Image[]) {
+	async addImages(@ConnectedSocket() socket: Socket, @MessageBody() data: Image) {
 		this.server.emit('addImages', data)
 	}
 }
