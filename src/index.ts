@@ -10,7 +10,7 @@ import { AppModule } from './app.module.js'
 	app.setGlobalPrefix('/api')
 
 	if (process.env.NODE_ENV === 'development') {
-		const config = new DocumentBuilder().setTitle('Documentacion').build()
+		const config = new DocumentBuilder().setTitle('Documentation').build()
 		const document = SwaggerModule.createDocument(app, config)
 		SwaggerModule.setup('/api', app, document)
 	}
