@@ -25,7 +25,7 @@ config()
 
 @WebSocketGateway({
 	transports: ['websocket'],
-	namespace: 'ws',
+	namespace: 'gateway',
 	cors: {
 		origin: '*'
 	}
