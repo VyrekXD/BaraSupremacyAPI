@@ -12,7 +12,14 @@ import { Server, Socket } from 'socket.io'
 import { config } from 'dotenv'
 import { Logger } from '@nestjs/common'
 
-import { Image } from './gateway.interface.js'
+interface Image {
+	source: 'telegram' | 'discord' | string
+	identifier: string
+	urls: string[]
+	jumpLink: string
+	type: string
+	people?: string[]
+}
 
 config()
 
