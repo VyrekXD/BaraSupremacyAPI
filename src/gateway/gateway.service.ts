@@ -9,8 +9,9 @@ import {
 	WebSocketServer
 } from '@nestjs/websockets'
 import { Server, Socket } from 'socket.io'
-import { config } from 'dotenv'
 import { Logger } from '@nestjs/common'
+
+import { config } from '../config.js'
 
 interface Image {
 	source: 'telegram' | 'discord' | string
@@ -20,8 +21,6 @@ interface Image {
 	type: string
 	people?: string[]
 }
-
-config()
 
 @WebSocketGateway({
 	transports: ['websocket'],
@@ -57,7 +56,7 @@ export class GatewayService implements OnGatewayConnection, OnGatewayDisconnect,
 			socket.emit('error', new Error('Auth: No token provided.'))
 			socket.disconnect(true)
 			return
-		} else if (token !== process.env.TOKEN) {
+		} else if (token !== config.token) {
 			socket.emit('error', new Error('Auth: Invalid token.'))
 			socket.disconnect(true)
 
