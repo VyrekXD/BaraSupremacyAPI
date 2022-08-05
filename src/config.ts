@@ -1,6 +1,6 @@
 import { config as dotenv } from 'dotenv'
 
-dotenv()
+dotenv({ path: '../.env' })
 
 export const config = {
 	token: process.env.TOKEN
