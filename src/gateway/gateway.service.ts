@@ -52,7 +52,7 @@ export class GatewayService implements OnGatewayConnection, OnGatewayDisconnect,
 
 	handleConnection(@ConnectedSocket() socket: Socket) {
 		const token = socket.handshake.auth.token
-		console.log(this.configService.get<string>('TOKEN'))
+
 		if (!token) {
 			socket.emit('error', new Error('Auth: No token provided.'))
 			socket.disconnect(true)
