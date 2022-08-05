@@ -10,8 +10,7 @@ import {
 } from '@nestjs/websockets'
 import { Server, Socket } from 'socket.io'
 import { Logger } from '@nestjs/common'
-
-import { config } from '../config.js'
+import { ConfigService } from '@nestjs/config'
 
 interface Image {
 	source: 'telegram' | 'discord' | string
@@ -30,6 +29,8 @@ interface Image {
 	}
 })
 export class GatewayService implements OnGatewayConnection, OnGatewayDisconnect, OnGatewayInit {
+	constructor(private configService: ConfigService) {}
+
 	private readonly logger = new Logger(GatewayService.name)
 
 	@WebSocketServer()
@@ -51,12 +52,12 @@ export class GatewayService implements OnGatewayConnection, OnGatewayDisconnect,
 
 	handleConnection(@ConnectedSocket() socket: Socket) {
 		const token = socket.handshake.auth.token
-
+		console.log(this.configService.get<string>('TOKEN'))
 		if (!token) {
 			socket.emit('error', new Error('Auth: No token provided.'))
 			socket.disconnect(true)
 			return
-		} else if (token !== config.token) {
+		} else if (token !== this.configService.get<string>('TOKEN')) {
 			socket.emit('error', new Error('Auth: Invalid token.'))
 			socket.disconnect(true)
 
